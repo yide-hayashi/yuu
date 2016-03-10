@@ -1,0 +1,232 @@
+﻿
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"> </script>
+    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="t/shCore.js"></script>
+    <script type="text/javascript" src="t/shBrushCSharp.js"></script>
+    <script type="text/javascript" src="t/shBrushCpp.js"></script>
+    <script src="jquery.hashtag_c.js"></script>
+    <script type="text/javascript" src="textcomplete.js"></script>
+    <script>
+        var setArray = function (elems) {
+            this.length = 0;
+            push.apply(this, elems);
+            return this;
+        }
+        var events = ['keydown', 'keyup', 'keypress', 'click', 'change'];
+        SyntaxHighlighter.config.bloggerMode = true;
+        SyntaxHighlighter.all();
+
+        try{
+            $(document).ready(function () {
+                $("#orderTema").mouseenter(function () {
+                    $("#orderTema").css("background-color", "#b2cdf6");
+
+                }).mouseleave(function () {
+                    $("#orderTema").css("background-color", "#E6F0FF")
+                });
+                $("#loockTema").mouseenter(function () {
+                    $("#loockTema").css("background-color", "#b2cdf6");
+                }).mouseleave(function () {
+                    $("#loockTema").css("background-color", "#E6F0FF")
+                });
+                $("#up").mouseenter(function () {
+                    $("#up").css("background-color", "#b2cdf6");
+                }).mouseleave(function () {
+                    $("#up").css("background-color", "#E6F0FF")
+                });
+                $("#result").mouseenter(function () {
+                    $("#result").css("background-color", "#b2cdf6");
+                }).mouseleave(function () {
+                    $("#result").css("background-color", "#E6F0FF")
+                });
+                //document.getElementById("dsiplay").innerHTML.replace("</stdio.h>", "");
+                $("#uh").click(function () { alert("123")});
+                $(".content").click(function () {
+                    var ad = $("#content1").text();
+                    $("#content1").text(ad + "|");
+                }).mouseenter(function () { alert("123"); })
+                $("#c").bind("input", function () { })
+
+                var elements = ['span', 'div', 'h1', 'h2', 'h3'];
+                $('.textarea').textcomplete([
+                    { // html
+                        match: /<(\w*)$/,
+                        search: function (term, callback) {
+                            callback($.map(elements, function (element) {
+                                return element.indexOf(term) === 0 ? element : null;
+                            }));
+                        },
+                        index: 1,
+                        replace: function (element) {
+                            return ['<' + element + '>', ""]; //要求回傳2element
+                        }
+                    }
+                ]);
+               /* $("#inputT1").bind(events, function (evn) {
+                    var re = new RegExp(/ (^\s)#(\s+?)(\s|$)/g), v = $("#inputT1").val();
+                    var escaped = $("<div>").text(v).html();
+                    var html = escaped.replace(re, function (m, p1, p2, p3, offset, str) {
+                        return p1+"<span class=textforspas>#"+p2 + "<span>"+p3;
+                    })
+                })*/
+                
+            })/*.keypress( function (event) {
+                
+                    var inkeyCode = event.which, outkey;
+                    var CodeToChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
+
+                    var c = $("#c").html();
+                    $("#c").html(c + event.data);
+              
+            }).load(function () {
+                $("body")
+            })*/;
+
+        }
+        catch (ex) { alert(ex) }
+
+       
+
+        function sload() {
+           // alert(windowHeight);
+        var windowsWidth = window.innerWidth; windowHeight =window.innerWidth;
+        
+        document.getElementById("headBar").style.left = windowsWidth / 7 + "px";
+        document.getElementById("headBar").style.width = windowsWidth-130 + "px";
+        document.getElementById("test").style.width = windowsWidth - 40 + "px";
+        document.getElementById("subjectTabel").style.width = windowsWidth - 80 + "px";
+        document.getElementById("subjectTabel-text").style.width = windowsWidth - 120 + "px";
+        $("#history").css("background-color", "#b2cdf6");
+       
+        }
+        function up()
+        {
+            var upstring;
+            upstring = document.getElementById("update").value;
+            window.external.updataString(upstring);
+        }
+        function looktema()
+        {
+            window.external.websubject();
+        }
+        function WebUpPage()
+        {
+            window.external.Webupdata();
+        }
+        function historySelectItem(i,n)
+        {
+            alert(n);
+            //window.external.historySelect(i);
+        }
+        function result()
+        {
+            window.external.displaySesult();
+        }
+        function history()
+        {
+            window.external.history();
+        }
+    </script>
+    <style>
+        @import URL(reset.css);
+        @import URL(t1.css);
+        @import URL(t/shCore.css);
+        @import URL(t/shThemeDefault.css);
+        @import URL(textcomplete.css);
+        body{
+            background-color:#E6F0FF;
+        }
+        .title{
+        }
+        .frame{
+            border-radius:20px ;
+             border-color:#FFFFFF;
+             border:solid thin;
+             box-shadow:10px 10px 2px rgba(20%,20%,40%,0.6),4px 4px 6px rgba(20%,20%,40%,0.4),6px 6px 12px rgba(20%,20%,40%,0.4);
+        }
+        .tema{
+            position:relative;
+            float:left;
+            left:20px;
+        }
+        .spanForTema{
+            text-align:center;
+            position:relative;
+            float:left;
+            font-family:'Microsoft JhengHei';
+            width:80px;
+        }
+        .chapterText
+        {
+            position:relative;
+            left:10px;
+            font-family:'Microsoft JhengHei'; 
+            text-align:center;
+        }
+        #headBar{
+            position:relative;
+            height:30px;
+        }
+        #inputText{
+            position:relative;
+            left:10px;
+            height:400px;
+        }
+        #update{
+            position:relative;
+            left:40%;
+        }
+        #text{
+            position:relative;
+            left:10px;
+            font-family:'Microsoft JhengHei'; 
+            font-size:20px; 
+            text-align:center
+        }
+        #subjectTabel{
+            position:relative;
+            left:15px;
+             border-radius:25px ;
+             border:solid thin;
+        }
+        #subjectTabel-text{
+            position:relative;
+            left:5px;
+        }
+        #select{
+            position:relative;
+            left:20px;
+        }
+        </style>
+</head>
+<body onload="sload()">
+   
+
+    <div id="headBar">
+        <div class="tema"><span class="spanForTema" id="loockTema" onclick="looktema()">目前題目</span></div>
+        <div class="tema" ><span class="spanForTema" id="orderTema" onclick="">其他題目</span></div>
+        <div class="tema"><span class="spanForTema" id="up" onclick="WebUpPage()">提交</span></div>
+        <div class="tema"><span class="spanForTema" id="result" onclick="">結果</span></div>
+        <div class="tema"><span class="spanForTema" id="history" onclick="">歷史紀錄</span></div>
+    </div>
+    <div class='frame' id='test' style="ime-mode:active">
+        <pre id='text'>提    交    區</pre>
+        <!---<textarea id='inputText' wrap='Virtual'></textarea>--->
+        <div class="c">
+            <textarea class="textarea"></textarea>
+        </div>
+        <br>
+        <br>
+        <input type='button' id='update' value='上交並看結果' onclick='' />
+        <hr>
+        <br>
+    </div>
+</body>
+<script>
+    $("textarea").hashtag();
+</script>
+</html>
