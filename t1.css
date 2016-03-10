@@ -1,0 +1,56 @@
+﻿@charset "utf-8";
+
+
+.c{
+	padding: 4px;
+	margin: 2px;
+	border: #eee 1px solid;
+	width: 480px;
+}
+
+.textarea {
+    position: relative;
+    background: transparent;
+    height: 120px;
+    width: 480px;
+    resize: none;
+    overflow: hidden;
+    border: dashed;  /*sold*/
+    outline: none;
+    border-width: 2px;
+}
+/** レイヤー関係のスタイル */
+.Layer {
+	position: absolute;
+	color: transparent;
+	white-space: pre-wrap;
+	text-align: left;
+	overflow: hidden;
+}
+
+div.Layer span {
+	display: inline-block;
+	max-width: 100%;
+}
+div.Layer span b {
+    position:relative;
+	background: #d8dfea;
+	background: -webkit-gradient(linear, center top, center bottom, from(#dce6fb),
+		to(#bdcff1) );
+	background: -webkit-linear-gradient(#dce6fb, #bdcff1);
+	background: -moz-linear-gradient(#dce6fb, #bdcff1);
+	background: -ms-linear-gradient(#dce6fb, #bdcff1);
+	background: -o-linear-gradient(#dce6fb, #bdcff1);
+	background: linear-gradient(#dce6fb, #bdcff1);
+	-webkit-box-shadow: 0 0 0 1px #a3bcea;
+	-moz-box-shadow: 0 0 0 1px #a3bcea;
+	-ms-box-shadow: 0 0 0 1px #a3bcea;
+	-o-box-shadow: 0 0 0 1px #a3bcea;
+	box-shadow: 0 0 0 1px #a3bcea;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
+	font-weight: normal;
+}
