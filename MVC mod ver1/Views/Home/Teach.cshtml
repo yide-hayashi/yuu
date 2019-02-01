@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "教學頁面";
+    string str = "";
+    int count = 0;
+    bool flag = false;
+    int page = ViewBag.pagecount, displaypage = ViewBag.displaypage;
+    var teach = ViewBag.teach;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>教學頁面</h2>
+
+@foreach (string[] obj in teach)
+{
+    str = "";
+    count = 0;
+    <div class="Teach-text">
+        @foreach (var strI in obj[0])
+        {
+            str += strI;
+            count++;
+        }
+        @for(;count<100;count++)
+        {
+            str += ".";
+        }
+        @Html.ActionLink( str+Html.Raw(" ")+obj[1], "TeachContent", new { name = obj[0] }, new { @class = "noticeTitle" })
+        
+    </div>
+}
+
+<div style="text-align:center;">
+    @if (page > 5)
+    {
+        if (displaypage >= 3 && displaypage <= page - 2)
+        {
+            @Html.ActionLink("|<", "Project", new { page = displaypage - 1 }) @:&nbsp;
+            @Html.ActionLink("上一頁", "Project", new { page = displaypage - 1 })@:&nbsp;
+            @Html.ActionLink((displaypage - 2).ToString(), "Project", new { page = displaypage - 2 })@:&nbsp;
+            @Html.ActionLink((displaypage - 1).ToString(), "Project", new { page = displaypage - 1 })@:&nbsp;
+            @Html.Label((displaypage).ToString())@:&nbsp;
+            @Html.ActionLink((displaypage + 1).ToString(), "Project", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink((displaypage + 2).ToString(), "Project", new { page = displaypage + 2 })@:&nbsp;
+            @Html.ActionLink("下一頁", "Project", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink(">|", "Project", new { page = page })@:&nbsp;
+
+        }
+        else if (displaypage == 1)
+        {
+            @Html.Label((displaypage).ToString()) @:&nbsp;
+            @Html.ActionLink((displaypage + 1).ToString(), "Project", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink((displaypage + 2).ToString(), "Project", new { page = displaypage + 2 })@:&nbsp;
+            @Html.ActionLink((displaypage + 3).ToString(), "Project", new { page = displaypage + 3 })@:&nbsp;
+            @Html.ActionLink((displaypage + 4).ToString(), "Project", new { page = displaypage + 4 })@:&nbsp;
+            @Html.ActionLink("下一頁", "Project", new { page = displaypage + 1 }) @:&nbsp;
+            @Html.ActionLink(">|", "Project", new { page = page })@:&nbsp;
+        }
+        else if (displaypage == 2)
+        {
+            @Html.ActionLink((displaypage - 1).ToString(), "Project", new { page = displaypage - 1 })@:&nbsp;
+            @Html.Label((displaypage).ToString())@:&nbsp;
+            @Html.ActionLink((displaypage + 1).ToString(), "Project", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink((displaypage + 2).ToString(), "Project", new { page = displaypage + 2 })@:&nbsp;
+            @Html.ActionLink((displaypage + 3).ToString(), "Project", new { page = displaypage + 3 })@:&nbsp;
+            @Html.ActionLink("下一頁", "Project", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink(">|", "Project", new { page = page })@:&nbsp;
+        }
+        else if (displaypage == page - 1)
+        {
+            @Html.ActionLink("|<", "Project", new { page = displaypage - 1 })
+            @Html.ActionLink("上一頁", "Project", new { page = displaypage - 1 })@:&nbsp;
+            @Html.ActionLink((displaypage - 3).ToString(), "Project", new { page = displaypage - 3 })@:&nbsp;
+            @Html.ActionLink((displaypage - 2).ToString(), "Project", new { page = displaypage - 2 })@:&nbsp;
+            @Html.ActionLink((displaypage - 1).ToString(), "Project", new { page = displaypage - 1 })@:&nbsp;
+            @Html.Label((displaypage).ToString())@:&nbsp;
+            @Html.ActionLink((displaypage + 1).ToString(), "Project", new { page = displaypage + 1 })@:&nbsp;
+        }
+        else
+        {
+            @Html.ActionLink("|<", "Project", new { page = displaypage - 1 })@:&nbsp;
+            @Html.ActionLink("上一頁", "Project", new { page = displaypage - 1 })@:&nbsp;
+            @Html.ActionLink((displaypage - 4).ToString(), "Project", new { page = displaypage - 4 })@:&nbsp;
+            @Html.ActionLink((displaypage - 3).ToString(), "Project", new { page = displaypage - 3 })@:&nbsp;
+            @Html.ActionLink((displaypage - 2).ToString(), "Project", new { page = displaypage - 2 })@:&nbsp;
+            @Html.ActionLink((displaypage - 1).ToString(), "Project", new { page = displaypage - 1 })@:&nbsp;
+            @Html.Label((displaypage).ToString())@:&nbsp;
+        }
+    }
+    else
+    {
+        for (int i = 1; i <= page; i++)
+        {
+            if (i == displaypage)
+            {
+                @Html.Label((displaypage).ToString())@:&nbsp;
+                      }
+            else
+            {
+                @Html.ActionLink((i).ToString(), "Project", new { page = i })@:&nbsp;
+                    }
+        }
+    }
+</div>

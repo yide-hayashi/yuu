@@ -1,0 +1,160 @@
+﻿@model WebApplication1.Models.managerModel
+
+@{
+    ViewBag.Title = "CreateNotice";
+
+}
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+}
+    <script>
+        var mess=@Html.Raw(Json.Encode(TempData["error"]));
+        if(mess=="1")
+        {
+            alert("使用者操作錯誤");
+        }
+        else if(mess=="2")
+        {
+             alert("必填格未輸入 ");
+        }
+        else if(mess=="0")
+        {
+            alert("提交成功");
+        }
+    </script>
+<script>
+    /* $(document).ready(function(){
+         var f=$("#tab2").click(function()
+         {
+             $("#up").show();
+         });
+         if(f!=true)
+         {
+             $("#up").hide();
+         }
+     })
+     */
+</script>
+<fieldset>
+    <div class="tabs">
+        <div id="tab-1" class="tab">
+            <!--1page 1tab-1 --->
+            <article>
+                <div class="text-section">
+                    <h1>公告管理</h1>
+                    <p></p>
+                </div>
+                <ul class="states">
+                    <li class="list">
+                        <form method="post" action="@Url.Action("CreateNotice","manager")">
+                            @Html.Label("類型:", new { @class = "tittleLab" })
+
+                            @Html.DropDownListFor(model => model.NoticeType_p, (IEnumerable<SelectListItem>)ViewBag.test, new { @class = "ddl" })
+                            <br />
+                            @Html.DropDownListFor(model => model.NoticeType_eventtype_p, (IEnumerable<SelectListItem>)ViewBag.type, new { @class = "ddl" })
+                            <br>
+                            <br>
+                            @Html.Label("標題:", new { @class = "tittleLab" })
+                            <br>
+                            @Html.EditorFor(model => model.NoticeTitle_p, new { @class = "titleForDb" })
+                            <br>
+                            <br>
+                            @Html.Label("內容:", new { @class = "tittleLab" })
+                            <br>
+                            <textarea wrap="Physical" class="Content ckeditor" cols="20" id="NoticeContent_p" name="NoticeContent_p" rows="2"></textarea>
+                            <br>
+                            <br>
+                            <div>
+                                <input type="submit" value="送出" id="butsur" />
+                                <input type="button" onclick="history.back()" id="butcannel" value="取消">
+                            </div>
+
+                            <div>
+
+                            </div>
+                        </form>
+                    </li>
+                    <!--<li class="error">Error : This is an error placed text message.</li>
+                    <li class="warning">Warning: This is a warning placed text message.</li>
+                    <li class="succes">Succes : This is a succes placed text message.</li>-->
+                </ul>
+
+            </article>
+        </div>
+        <div id="tab-2" class="tab">
+            <!--2page 1tab-2 --->
+            <article>
+                <div class="text-section">
+                    <h1>相簿管理</h1>
+                    <p></p>
+                </div>
+                <ul class="states">
+                    <li class="list">
+                        <form method="post" action="@Url.Action("CreateNotice","manager")">
+                        @Html.Label("相簿名稱:", new { @class = "tittleLab" })
+                        <br>
+                            <br>
+                        @Html.EditorFor(model => model.AlbumTitle_p, new { @class = "titleForDb" })
+                        <br>
+                            <br>
+                        @Html.Label("相簿內容說明文:", new { @class = "tittleLab" })
+                        <br>
+                           
+                        @Html.TextAreaFor(model => model.AlbumContent_p, new { @class = "Content", Wrap = "Physical" })
+                        <div style="position:relative;width:600px;height:400px;" id="up">
+                            <iframe src="/manager/upalbum" frameborder="0" scrolling="no" style="top:200px;width:800px; height:300px"></iframe>
+                            <input type="submit" value="送出">
+                        </div>
+                    
+                       </form>
+                    </li>
+                    <!--<li class="error">Error : This is an error placed text message.</li>
+                    <li class="warning">Warning: This is a warning placed text message.</li>
+                    <li class="succes">Succes : This is a succes placed text message.</li>-->
+                </ul>
+
+            </article>
+        </div>
+        <div id="tab-3" class="tab">
+            <!--2page 1tab-2 --->
+            <article>
+                <div class="text-section">
+                    <h1>教學發布</h1>
+                    <p></p>
+                </div>
+                <ul class="states">
+                    <li class="list">
+                        <form method="post" action="@Url.Action("CreateNotice","manager")">
+                            @Html.Label("主題名稱:", new { @class = "tittleLab" })
+                            <br>
+                            <br>
+                            @Html.EditorFor(model => model.TeachTitle_p, new { @class = "titleForDb" })
+                            <br>
+                            <br>
+                            @Html.Label("教學內容說明文:", new { @class = "tittleLab" })
+                            <br>
+
+                            <textarea name="TeachContent_p" class="Content ckeditor" id="TeachContent_p" rows="2" cols="20"></textarea>
+                            <div style="position:relative;width:600px;height:400px;" id="up">
+                                <input type="submit" value="送出">
+                            </div>
+
+                        </form>
+                    </li>
+                    <!--<li class="error">Error : This is an error placed text message.</li>
+                <li class="warning">Warning: This is a warning placed text message.</li>
+                <li class="succes">Succes : This is a succes placed text message.</li>-->
+                </ul>
+
+            </article>
+        </div>
+    </div>
+
+</fieldset>
+
+
+

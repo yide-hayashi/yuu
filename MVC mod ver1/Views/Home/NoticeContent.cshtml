@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "公告頁面";
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    
+</script>
+
+
+    @foreach (string[] i in ViewBag.text)
+    {
+<h3>@i[0]</h3>
+<p>種類: @i[1]</p>
+<p class="noticeContent-time">@i[3]</p> <!--- time-->
+                   
+<div class="noticeContent contentAbout">@Html.Raw(i[2])</div>
+       
+    }
+

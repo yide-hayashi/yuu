@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div> 
+        @if(TempData["fs"]!="" && TempData["fs"] != null)
+        {
+            <img src="/Files/@TempData["fs"]" style="width:180px;"/>
+        }
+        @if (TempData["linkmodo"] != "" && TempData["linkmodo"] != null)
+        {
+            <img src="~/img/link/@TempData["linkmodo"] " style="width:180px;" />
+        }
+        @if (TempData["filesmodo"] != "" && TempData["filesmodo"] != null)
+        {
+            <img src="~/img/@TempData["filesmodo"] " style="width:180px;" />
+        }
+        <form method="post" enctype="multipart/form-data">
+            <label>請選擇一個圖片上傳</label><br>
+            <input type="file" name="files" draggable="true">
+            <br>
+            <input type="button" onclick="history.back()" value="取消">
+            <input type="submit" value="上傳" />
+        </form>
+    </div>
+</body>
+</html>

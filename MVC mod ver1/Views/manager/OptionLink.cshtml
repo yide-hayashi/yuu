@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication1.Models.managerModel>
+
+@{
+    Layout = null;
+    WebApplication1.Models.managerModel list = new WebApplication1.Models.managerModel();
+    Layout = null;
+    var grid = new WebGrid(Model, rowsPerPage: 5, selectionFieldName: "selectedRow",
+        ajaxUpdateContainerId: "gridConten");
+
+    grid.Pager(WebGridPagerModes.NextPrevious);
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div> 
+        <br>
+        @Html.ActionLink("新增相關連結", "OptionLinkAdd", "manager", new { x = 0 },new { @class= "pre-about" })
+        @grid.GetHtml(tableStyle: "webGrid",
+                                        headerStyle: "header",
+                                        alternatingRowStyle: "alt",
+                                        selectedRowStyle: "select",
+                                        columns: grid.Columns(
+                                            grid.Column("OptionLinkName_p", "連結名稱"),
+                                            grid.Column("OptionLinkweb_p", "連結網址"),
+                                            grid.Column("", "顯示圖片", format:@<div>
+                                               <img style="width:180px" src="~/img/link/@item["OptionLinkImg_p"]" />
+                                            </div>
+                                            ),
+                                                    grid.Column("", header: "Actions",
+                                    format:@<form method="post">
+                                                        @Html.ActionLink("刪除", "OptionLinkDel", new { x = item["OptionAddCount_p"], na = item["OptionLinkImg_p"] })
+                                                        @Html.ActionLink("更改", "OptionLinkChange", new { x = item["OptionAddCount_p"], na = item["OptionLinkImg_p"] })
+                                                    </form>
+                                    )))
+    </div>
+</body>
+</html>

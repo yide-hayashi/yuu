@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebApplication1.Models.managerModel>
+@{
+    WebApplication1.Models.managerModel list = new WebApplication1.Models.managerModel();
+    var grid = new WebGrid(Model, rowsPerPage: 15, selectionFieldName: "selectedRow",
+        ajaxUpdateContainerId: "gridConten");
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+
+@{
+    Layout = null;
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+}
+
+<!DOCTYPE html>
+<style>
+    .webGrid {
+        width: 800px;
+    }
+</style>
+
+<html>
+<body >
+    <div> 
+        @grid.GetHtml(tableStyle: "webGrid",
+                          headerStyle: "header",
+                          alternatingRowStyle: "alt",
+                          selectedRowStyle: "select",
+                          columns: grid.Columns(
+                              grid.Column("NoticeType_p", "分類"),
+                               grid.Column("NoticeType_eventtype_p", "活動性質"),
+                           grid.Column("NoticeTitle_p", "標題"),
+                           grid.Column("date_p", "發布時間"),
+                           grid.Column("", header: "Actions",
+                           format:@<text>
+                            @Html.ActionLink("編輯", "ChangeNotice", new { na = item["NoticeTitle_p"] })<br>
+                            @Html.ActionLink("刪除", "NoticeDel",new { na=item["NoticeTitle_p"] })
+                        </text>
+                           )
+                           ))
+    </div>
+</body>
+</html>

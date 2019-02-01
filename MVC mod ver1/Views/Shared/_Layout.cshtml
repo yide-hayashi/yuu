@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="台中市后里區福康關懷協會">
+    <meta name="keywords" content="福康, 福康關懷協會, 后里福康, 中和福康, 台中市后里區福康關懷協會, 台中社福, 
+fukan,台中關懷協會 , 關懷協會, 關懷, 台中, 老人, 老人協會">
+<meta property="og:title" content="福康關懷協會">
+<meta property="og:type" content="website">
+<meta property="og:url" content="">
+<meta property="og:description" content="台中市后里區福康關懷協會">
+<meta property="og:site_name" content="福康關懷協會">
+    <title>@ViewBag.Title - 福康關懷協會</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery.edslider")
+    <script src="/Scripts/IndexDisplay.js"></script>
+    <script src='/Scripts/fancybox/jquery.fancybox.js'></script>
+    <script src='/Scripts/jquery.edslider.js'></script>
+    <script src='/Scripts/fancybox/jquery.easing-1.3.pack.js'></script>
+    <script src='/Scripts/fancybox/jquery.mousewheel-3.0.6.pack.js'></script>
+    <link rel="stylesheet" type="text/css" href="~/Scripts/fancybox/jquery.fancybox.css"/>
+    <script language="javascript" type="text/javascript" src="http://counter1.fc2.com/counter.php?id=89440900"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+   
+</head>
+<body>
+    <div class="global">
+        <div class="lay_img">
+            <a href="/Home"><img src="~/img/head/@ViewBag.img" id="img"/></a>
+        </div>
+        <div class="bodyglobe">
+            <ul class="drop-down-menu">
+                <li>@Html.ActionLink("關於我們","about")</li>  
+                <li>@Html.ActionLink("據點", "Address")</li> 
+                <li>
+                    <a>服務項目與活動</a>
+                    <ul>
+                        <li>@Html.ActionLink("服務項目", "service")</li>
+                        <li>@Html.ActionLink("紀錄與招募", "Normal",new { page=1})</li>
+                        <li>@Html.ActionLink("專案活動", "Project", new { page = 1 })</li>
+                    </ul>
+                </li> 
+                <li>@Html.ActionLink("志工專區", "Prefecture",new { page=1})</li> 
+                <li>@Html.ActionLink("教學", "Teach", new { page = 1 })</li> 
+                <li>@Html.ActionLink("聯絡我們", "feedback","Home")</li> 
+            </ul>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer  class="footermod">
+                <p>&copy; 臺中市福康關懷協會・版權所有</p>
+                <p> 製作者:張睦煒、林易德</p>
+               
+            </footer>
+        </div>
+
+        @RenderSection("scripts", required: false)
+   </div>
+</body>
+</html>

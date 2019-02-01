@@ -1,0 +1,103 @@
+﻿@model IEnumerable<WebApplication1.Models.managerModel>
+@{
+    ViewBag.Title = "Index";
+    WebApplication1.Models.managerModel list = new WebApplication1.Models.managerModel();
+}
+<script>
+    var mess=@Html.Raw(Json.Encode(TempData["error"]));
+        if(mess=="0")
+        {
+            alert("提交成功");
+        }
+    </script>
+<fieldset>
+    <form method="post">
+        <div class="tabs">
+            <div id="tab-1" class="tab">
+                <!--1page 1tab-1 --->
+                <article>
+                    <div class="text-section">
+                        <h1>公告管理</h1>
+                        <p>公告刪除與編輯</p>
+                    </div>
+                    <ul class="states">
+                        <li class="list">
+                            <iframe src="/manager/LookNoticeTable" width="800" height="1400" frameborder="0" scrolling="yes" id="noticeTable"></iframe>
+
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+            <div id="tab-2" class="tab">
+                <!--2page 1tab-2 --->
+                <article>
+                    <div class="text-section">
+                        <h1>相簿管理</h1>
+                        <p>相片刪除與編輯</p>
+                    </div>
+                    <ul class="states">
+                        <li class="list">
+                            <iframe id="lookAlbumTabel" width="1400" height="2400" src="/manager/LookAlbumTable" frameborder="0" scrolling="yes"></iframe>
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+            <div id="tab-3" class="tab">
+                <!--2page 1tab-2 --->
+                <article>
+                    <div class="text-section">
+                        <h1>教學文章管理</h1>
+                        <p>教學文章編輯與刪除</p>
+                    </div>
+                    <ul class="states">
+                        <li class="list">
+                            <iframe id="lookTeachTabel" width="840" height="1600" src="/manager/LookTeachTable" frameborder="0" scrolling="yes"></iframe>
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+            <div id="tab-4" class="tab">
+                <!--2page 1tab-2 --->
+                <article>
+                    <div class="text-section">
+                        <h1>意見管理</h1>
+                        <p></p>
+                    </div>
+                    <ul class="states">
+                        <li class="list">
+                            <iframe id="LookFeedbackTabel" width="1200" height="1600" src="/manager/LookFeedbackTable" frameborder="0" scrolling="yes"></iframe>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+            <div id="tab-5" class="tab">
+                <article>
+                    <div class="text-section">
+                        <h1>頁面設定</h1>
+                        <p>細項設定</p>
+                    </div>
+                    <ul class="states">
+                        <li class="list">
+                            <iframe style="width:1200px; " src="/manager/HeadImgOption" frameborder="0" scrolling="no"></iframe>
+                            <hr>
+                            <iframe style="width:1200px; height:800px;" src="/manager/HeadTurnImg" frameborder="0" scrolling="yes"></iframe>
+                            <hr>
+                            <iframe style="width:1200px; height:1200px;" src="/manager/OptionAddress" frameborder="0" scrolling="yes"></iframe>
+                            <hr>
+                            <iframe style="width:1200px; height:1200px;" src="/manager/OptionAbout" frameborder="0" scrolling="yes"></iframe>
+                            <hr>
+                            <iframe style="width:1200px; height:1200px;" src="/manager/OptionServiec" frameborder="0" scrolling="yes"></iframe>
+                            <hr>
+                            <iframe style="width:1200px; height:1200px;" src="/manager/Optionlink" frameborder="0" scrolling="yes"></iframe>
+
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </form>
+</fieldset>

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<WebApplication1.Models.managerModel>
+@{
+    WebApplication1.Models.managerModel list = new WebApplication1.Models.managerModel();
+
+
+    var grid = new WebGrid(Model, rowsPerPage: 5, selectionFieldName: "selectedRow",
+        ajaxUpdateContainerId: "gridConten");
+
+    grid.Pager(WebGridPagerModes.NextPrevious);
+
+}
+
+@{
+    Layout = null;
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+    string str = "", title = "";
+    int charcount = 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" Content="width=device-width" />
+</head>
+<body>
+    <div >
+        @grid.GetHtml(tableStyle: "webGrid",
+                                        headerStyle: "header",
+                                        alternatingRowStyle: "alt",
+                                        selectedRowStyle: "select",
+                                        columns: grid.Columns(
+                                    grid.Column("AlbumTitle_p", "標題"),
+                                    grid.Column("", "內容", format: @<div>
+                                        @foreach (char i in item["AlbumContent_p"])
+                                        {
+                                            if (item["AlbumContent_p"] != title)
+                                            {
+                                                title = item["AlbumContent_p"];
+                                                str = "";
+                                                charcount = 0;
+                                            }
+                                            if (charcount > 50)
+                                            {
+                                                str += "...";
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                str += i;
+                                                charcount++;
+                                            }
+                                        }
+                                        <a>@str</a>
+                                    </div>
+             ),
+                                    grid.Column("date_p", "發布時間"),
+                                    grid.Column("", "相片", format:@<div>
+                                        @if(str!="")
+                                        {
+                                            str = "";
+                                        }
+                                        @foreach (char i in item["AlbumImgadd_p"])
+                                        {
+                                            if (item["AlbumTitle_p"] != title)
+                                            {
+                                                title = item["AlbumTitle_p"];
+                                                str = "";
+                                            }
+                                            if (i == null || i == '\0')
+                                            {
+                                                break;
+                                            }
+                                            else if (i == '!')
+                                            {
+                                                <img style="width:150px; height:180px" src="@str">
+                                                str = "";
+                                            }
+                                            else
+                                            {
+                                                str += i;
+                                            }
+                                        }
+                                        <img style="width:150px; height:180px" src="@str">
+
+                                    </div>
+                                                                           ),
+                                    grid.Column("", header: "Actions",
+                                    format:@<text>
+                                        @Html.ActionLink("編輯", "AlbumChange",new { x=item["OptionAddCount_p"] })<br>
+                                        @Html.ActionLink("刪除", "AlbumDelall", new { x = item["OptionAddCount_p"] })
+                                    </text>)))
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "教學頁面";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "NoticeContent";
+}
+
+@foreach (string[] i in ViewBag.text)
+{
+    <h3>@i[0]</h3>
+    <p class="noticeContent-time">@i[2]</p> <!--- time-->
+
+<div class="noticeContent">@Html.Raw(i[1])</div>
+
+}

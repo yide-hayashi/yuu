@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Link";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>相關連結</h2>
+
+@foreach (string[] obj in ViewBag.link)
+{
+    <div>
+                <p>@obj[1]</p>
+                <a  href="http://@obj[2]"><img src="~/img/link/@obj[0]" alt="" class="link-img" /></a>
+    </div>
+}

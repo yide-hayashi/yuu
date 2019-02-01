@@ -1,0 +1,61 @@
+﻿@model WebApplication1.Models.managerModel
+@{
+    Layout = null;
+}
+@Styles.Render("~/Content/manager/css")
+<!DOCTYPE html>
+<style>
+
+    #NoticeType_eventtype_p
+    {
+        width: 600px;
+    }
+    #NoticeType_p
+    {
+         width: 600px;
+    }
+    #text1
+    {
+         width: 600px;
+    }
+</style>
+<html>
+<head>
+    <title>ChangeNotice</title>
+    <script src="//cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
+</head>
+<body>
+    <div> 
+        <form method="post">
+            @Html.Label("類型:", new { @class = "tittleLab" })
+            <br>
+            @Html.DropDownListFor(model => model.NoticeType_p, (IEnumerable<SelectListItem>)ViewBag.test, new { @class = "ddl" })
+            <br />
+            @Html.DropDownListFor(model => model.NoticeType_eventtype_p, (IEnumerable<SelectListItem>)ViewBag.type, new { @class = "ddl" })
+            <br>
+            <br>
+            @Html.Label("標題:", new { @class = "tittleLab" })
+            <br>
+            <br>
+            @Html.EditorFor(model => model.NoticeTitle_p, new { @class = "titleForDb" })
+            <br>
+            <br>
+            @Html.Label("內容:", new { @class = "tittleLab" })
+            <br>
+            <br>
+            @Html.TextAreaFor(model => model.NoticeContent_p, new { @id="text1", Wrap = "Physical", @class = "ckeditor" })
+            <br>
+            <br>
+            <div>
+                <input type="submit" value="送出" id="butsur" />
+                <input type="button" onclick="history.back()" id="butcannel" value="取消">
+            </div>
+
+            <div>
+
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

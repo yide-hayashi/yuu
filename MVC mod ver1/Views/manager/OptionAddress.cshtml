@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WebApplication1.Models.managerModel>
+@{
+    WebApplication1.Models.managerModel list = new WebApplication1.Models.managerModel();
+    Layout = null;
+    var grid = new WebGrid(Model, rowsPerPage: 5, selectionFieldName: "selectedRow",
+        ajaxUpdateContainerId: "gridConten");
+
+    grid.Pager(WebGridPagerModes.NextPrevious);
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+    int count = 0;
+    string str = "",title="";
+    bool flag = false;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body class="overtop">
+    <br>
+    <div style="width:800px;">
+        <!--- 列表顯示 資訊-->
+        @Html.ActionLink("新增據點", "OptionAddressCreate", "manager",new { x=0},new { @class= "HOfont" })
+        <br>
+        @grid.GetHtml(tableStyle: "webGrid",
+                                        headerStyle: "header",
+                                        alternatingRowStyle: "alt",
+                                        selectedRowStyle: "select",
+                                        columns: grid.Columns(
+                                            grid.Column("OptionAddAddressName_p", "據點名稱"),
+                                            grid.Column("OptionAddAddress_p", "地址"),
+                                            grid.Column("OptinoAddPhone_p", "連絡電話"),
+                                            grid.Column("OptionAddTrafficInfo_p", "交通資訊"),
+                                            grid.Column("", "地圖", format:@<div>
+                                                @foreach (var i in item["OptionAddImg_p"])
+                                                {
+                                                    str += i;
+                                                    count++;
+                                                    if(count==7 && str== "<iframe")
+                                                    {
+                                                       @Html.Raw(item["OptionAddImg_p"])
+                                                        str = "";
+                                                        flag = false;
+                                                        count = 0;
+                                                        break;
+                                                    }
+                                                    else if(count==7)
+                                                    {
+                                                        flag = true;
+                                                        break;
+                                                    }
+                                                }
+                                                @if(flag==true)
+                                                {
+                                                    <img style="width:180px" src="~/img/@item["OptionAddImg_p"]"/>
+                                                    str = "";
+                                                    flag = false;
+                                                    count = 0;
+                                                }
+                                            </div>
+                                            ),
+                                                    grid.Column("", header: "Actions",
+                                    format:@<form method="post">
+                                                        @Html.ActionLink("刪除", "OptionAddressDel", new { x = item["OptionAddCount_p"],na= item["OptionAddImg_p"] })<br>
+                                                        @Html.ActionLink("更改", "OptionAddressChange", new {  x = item["OptionAddCount_p"], na = item["OptionAddImg_p"] })
+                                                    </form>
+                                    )))
+    </div>
+</body>
+</html>

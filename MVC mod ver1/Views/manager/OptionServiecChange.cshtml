@@ -1,0 +1,31 @@
+﻿@model WebApplication1.Models.managerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        #service_p {
+            width: 600px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div> 
+        <form method="post">
+            @Html.Label("更改頁面")<br>
+            @Html.Label("服務項目:") <br>
+            @Html.TextAreaFor(model => model.service_p, new { Wrap = "Physical" })
+            <br>
+            <br>
+            <input type="submit" value="送出" id="butsur" />
+            <input type="button" onclick="history.back()" id="butcannel" value="取消">
+        </form>
+    </div>
+</body>
+</html>

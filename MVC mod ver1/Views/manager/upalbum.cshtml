@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+    @Styles.Render("~/Content/manager/css")
+}
+
+<html>
+<body>
+    @using (Html.BeginForm("upalbum", "manager", FormMethod.Post, new
+    { enctype = "multipart/form-data" }))
+    {
+        <div>
+            @using(Html.BeginForm())
+            {
+                if (ViewData["img"] != null)
+                {
+                    int count = 0;
+                <label>已選定檔案:</label><br>
+                    foreach (var i in (List<string>)ViewData["img"])
+                    {
+                    <a>@i </a>
+                        count++;
+                        if (count % 5 == 0)
+                        {
+                          <br>
+                        }
+                    }
+                }
+            }
+            <br>
+            <label>請選擇一格或多個上傳</label><br>
+            <input type="file" name="files"multiple="multiple" required="required" draggable="true" ><br>
+            <input type="button" onclick="history.back()" value="取消">
+            <input type="submit" value="上傳" />
+            
+            
+           
+        </div>
+    }
+</body>
+</html>

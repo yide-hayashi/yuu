@@ -1,0 +1,55 @@
+﻿@model WebApplication1.Models.managerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script>
+        
+        </script>
+</head>
+<body>
+    <div> 
+        <!---填寫欄位--->
+        <form method="post">
+            <label>*字務必輸入</label><br>
+            @if (ViewBag.msg == "0")
+            {
+                <label style="color:red;font-size:18px;">有欄位未輸入</label><br>
+            }
+            @Html.Label("*據點名稱:", new { @class = "tittleLab", @text="123" })
+            <br />
+            @Html.EditorFor(model => model.OptionAddAddressName_p, new { @class = "ddl"})
+            <br />
+            @Html.Label("*地址:", new { @class = "tittleLab" })
+            <br />
+            @Html.EditorFor(model => model.OptionAddAddress_p, new { @class = "ddl" })
+            <br>
+            <br>
+            @Html.Label("*連絡電話:", new { @class = "tittleLab" })
+            <br>
+            @Html.EditorFor(model => model.OptinoAddPhone_p, new { @class = "titleForDb" })
+            <br>
+            <br>
+            @Html.Label("交通資訊:", new { @class = "tittleLab" })
+            <br>
+            @Html.TextAreaFor(model => model.OptionAddTrafficInfo_p, new { @class = "Content" })
+            <br>
+            <br>
+            @Html.Label("地圖或圖片:", new { @class = "tittleLab" })
+            @Html.EditorFor(model => model.OptionAddImg_p, new { @class = "Content", @id = "map" })<p>若上傳圖片此行勿輸入</p>
+            <br>
+            <iframe src="/manager/OptionAddressMapUp" height="300" width="600"  frameborder="0" scrolling="yes"></iframe>
+            <div>
+                <input type="submit" value="送出" id="butsur" />
+                <input type="button" onclick="history.back()" id="butcannel" value="取消">
+            </div>
+                </form>
+            <!-----插入上傳Action-->
+</div>
+</body>
+</html>

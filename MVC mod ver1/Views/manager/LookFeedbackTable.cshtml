@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication1.Models.managerModel>
+@{
+    Layout = null;
+    WebApplication1.Models.managerModel list = new WebApplication1.Models.managerModel();
+    var grid = new WebGrid(Model, rowsPerPage: 10, selectionFieldName: "selectedRow",
+        ajaxUpdateContainerId: "gridConten");
+    grid.Pager(WebGridPagerModes.NextPrevious);
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LookFeedbackTable</title>
+</head>
+<body>
+    <div> 
+        @grid.GetHtml(tableStyle: "webGrid",
+                          headerStyle: "header",
+                          alternatingRowStyle: "alt",
+                          selectedRowStyle: "select",
+                          columns: grid.Columns(
+                              grid.Column("FBName_p", "姓名"),
+                               grid.Column("FBcontent_p", "內容"),
+                           grid.Column("FBphone_p", "連絡電話"),
+                           grid.Column("FBmail_p", "e-mail"),
+                           grid.Column("", header: "Actions",
+                           format:@<text>
+                            @Html.ActionLink("刪除", "FeedbackDelall", new { x= item["OptionAddCount_p"] })
+                        </text>
+                           )
+                           ))
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+    var service = ViewBag.service;
+}
+@Styles.Render("~/Content/manager/css")
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OptionServiec</title>
+</head>
+<body class="overtop">
+    <br>
+    <div> 
+        @Html.ActionLink("更改", "OptionServiecChange","manager", new { @class = "HOfont" })
+        <br>
+        <br>
+        @Html.Label("服務項目：", new { @class = "HOfont" })<br>
+        <pre class="pre-about">@service</pre>
+    </div>
+</body>
+</html>

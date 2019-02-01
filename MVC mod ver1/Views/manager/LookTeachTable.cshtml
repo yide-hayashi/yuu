@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebApplication1.Models.managerModel>
+@{
+    WebApplication1.Models.managerModel list = new WebApplication1.Models.managerModel();
+    var grid = new WebGrid(Model, rowsPerPage: 20, selectionFieldName: "selectedRow",
+        ajaxUpdateContainerId: "gridConten");
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+
+@{
+    Layout = null;
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+    string str = "", title = "";
+    int charcount = 0;
+}
+
+<!DOCTYPE html>
+<style>
+    .webGrid
+    {
+        width:800px;
+    }
+</style>
+<html>
+
+<body>
+    <div>
+        @grid.GetHtml(tableStyle: "webGrid",
+                          headerStyle: "header",
+                          alternatingRowStyle: "alt",
+                          selectedRowStyle: "select",
+                          columns: grid.Columns(
+                           grid.Column("TeachTitle_p", "標題"),
+                           grid.Column("", "文章內容", format:
+                           @<div>
+                                @foreach (char i in item["TeachContent_p"])
+                                {
+                                    if (item["TeachTitle_p"] != title)
+                                    {
+                                        title = item["TeachTitle_p"];
+                                        str = "";
+                                        charcount = 0;
+                                    }
+                                    if (charcount > 50)
+                                    {
+                                        str += "...";
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        str += i;
+                                        charcount++;
+                                    }
+                                }
+                                <a>@str</a>
+                           </div>
+                           ),
+                           grid.Column("date_p", "發布時間"),
+                           grid.Column("", header: "Actions",
+                           format:@<text>
+                            @Html.ActionLink("編輯", "TeachChange", new { name=item["TeachTitle_p"] })
+                            <br>
+                            @Html.ActionLink("刪除", "TeachDel", new { name = item["TeachTitle_p"] })
+                        </text>
+                           )
+                           ))
+    </div>
+</body>
+</html>
+

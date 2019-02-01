@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "紀錄與招募";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string str = "";
+    int count = 0;
+    bool flag = false;
+    int page = ViewBag.pagecount, displaypage = ViewBag.displaypage;
+}
+
+<h1>紀錄與招募</h1>
+
+@foreach (string[] i in ViewBag.text)
+{
+    flag = false;
+    str = "";
+    count = 0;
+    <h3>@i[0]</h3>
+    <p>@i[2]</p>
+    if (i[1] != null)
+    {
+        foreach (var s in i[1])
+        {
+            if (count > 200)
+            {
+                str += "...";
+                <p>@str</p>
+                flag = true;
+                str = "";
+                count = 0;
+                break;
+            }
+            str += s;
+            count++;
+        }
+        if (flag == false)
+        {
+
+            <p>@i[1]</p>
+        }
+        @Html.ActionLink("閱讀更多", "NoticeContent", new { name = i[0] });
+    }
+}
+
+<div style="text-align:center;">
+    @if (page > 5)
+    {
+        if (displaypage >= 3 && displaypage <= page - 2)
+        {
+            @Html.ActionLink("|<", "Normal", new { page = displaypage - 1 }) @:&nbsp;
+            @Html.ActionLink("上一頁", "Normal", new { page = displaypage - 1 })@:&nbsp;
+            @Html.ActionLink((displaypage - 2).ToString(), "Normal", new { page = displaypage - 2 })@:&nbsp;
+            @Html.ActionLink((displaypage - 1).ToString(), "Normal", new { page = displaypage - 1 })@:&nbsp;
+            @Html.Label((displaypage).ToString())@:&nbsp;
+            @Html.ActionLink((displaypage + 1).ToString(), "Normal", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink((displaypage + 2).ToString(), "Normal", new { page = displaypage + 2 })@:&nbsp;
+            @Html.ActionLink("下一頁", "Normal", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink(">|", "Normal", new { page = page })@:&nbsp;
+
+        }
+        else if (displaypage == 1)
+        {
+            @Html.Label((displaypage).ToString()) @:&nbsp;
+            @Html.ActionLink((displaypage + 1).ToString(), "Normal", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink((displaypage + 2).ToString(), "Normal", new { page = displaypage + 2 })@:&nbsp;
+            @Html.ActionLink((displaypage + 3).ToString(), "Normal", new { page = displaypage + 3 })@:&nbsp;
+            @Html.ActionLink((displaypage + 4).ToString(), "Normal", new { page = displaypage + 4 })@:&nbsp;
+            @Html.ActionLink("下一頁", "Normal", new { page = displaypage + 1 }) @:&nbsp;
+            @Html.ActionLink(">|", "Normal", new { page = page })@:&nbsp;
+        }
+        else if (displaypage == 2)
+        {
+            @Html.ActionLink((displaypage - 1).ToString(), "Normal", new { page = displaypage - 1 })@:&nbsp;
+            @Html.Label((displaypage).ToString())@:&nbsp;
+            @Html.ActionLink((displaypage + 1).ToString(), "Normal", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink((displaypage + 2).ToString(), "Normal", new { page = displaypage + 2 })@:&nbsp;
+            @Html.ActionLink((displaypage + 3).ToString(), "Normal", new { page = displaypage + 3 })@:&nbsp;
+            @Html.ActionLink("下一頁", "Normal", new { page = displaypage + 1 })@:&nbsp;
+            @Html.ActionLink(">|", "Normal", new { page = page })@:&nbsp;
+        }
+        else if (displaypage == page - 1)
+        {
+            @Html.ActionLink("|<", "Normal", new { page = displaypage - 1 })
+            @Html.ActionLink("上一頁", "Normal", new { page = displaypage - 1 })@:&nbsp;
+            @Html.ActionLink((displaypage - 3).ToString(), "Normal", new { page = displaypage - 3 })@:&nbsp;
+            @Html.ActionLink((displaypage - 2).ToString(), "Normal", new { page = displaypage - 2 })@:&nbsp;
+            @Html.ActionLink((displaypage - 1).ToString(), "Normal", new { page = displaypage - 1 })@:&nbsp;
+            @Html.Label((displaypage).ToString())@:&nbsp;
+            @Html.ActionLink((displaypage + 1).ToString(), "Normal", new { page = displaypage + 1 })@:&nbsp;
+        }
+        else
+        {
+            @Html.ActionLink("|<", "Normal", new { page = displaypage - 1 })@:&nbsp;
+            @Html.ActionLink("上一頁", "Normal", new { page = displaypage - 1 })@:&nbsp;
+            @Html.ActionLink((displaypage - 4).ToString(), "Normal", new { page = displaypage - 4 })@:&nbsp;
+            @Html.ActionLink((displaypage - 3).ToString(), "Normal", new { page = displaypage - 3 })@:&nbsp;
+            @Html.ActionLink((displaypage - 2).ToString(), "Normal", new { page = displaypage - 2 })@:&nbsp;
+            @Html.ActionLink((displaypage - 1).ToString(), "Normal", new { page = displaypage - 1 })@:&nbsp;
+            @Html.Label((displaypage).ToString())@:&nbsp;
+        }
+    }
+    else
+    {
+        for (int i = 1; i <= page; i++)
+        {
+            if (i == displaypage)
+            {
+                @Html.Label((displaypage).ToString())@:&nbsp;
+            }
+            else
+            {
+                @Html.ActionLink((i).ToString(), "Normal", new { page = i })@:&nbsp;
+            }
+        }
+    }
+</div>

@@ -1,0 +1,76 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link media="all" rel="stylesheet" type="text/css" href="css/all.css" />
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
+    @Scripts.Render("~/bundles/manager")
+    <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <div id="content">
+            <div class="c1">
+                <div class="controls">
+                    <nav class="links">
+                        <ul>
+                            <li><a href="~/manager/index" class="ico3">管理頁面 </a></li>
+                            <li><a href="~/manager/CreateNotice" class="ico3">發布頁面 </a></li>
+                        </ul>
+                    </nav>
+                    <div class="profile-box">
+                        <span class="profile">
+                            <a href="#" class="section">
+                               
+                                <span class="text-box">
+                                    Welcome
+                                    <strong class="name">@ViewData["acc"]</strong><!--account-->
+                                </span>
+                            </a>
+                        </span>
+                        <a href="/manager/logout" class="btn-on">On</a> <!---logout-->
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+        <form method="post">
+        <aside id="sidebar">
+            <strong class="logo"><a href="/Home/"><img src="~/img/icon.png" class="logo" style=" width:40px;"/></a></strong>
+            <ul class="tabset buttons">
+                <li class="active">
+                   <a href="#tab-1" class="ico4"><span>公告管理</span></a>
+                    <span class="tooltip"><span>公告管理</span></span>
+                </li>
+                <li>
+                    <a href="#tab-2" class="ico2" id="tab2"><span>相簿管理</span></a>
+                    <span class="tooltip"><span>相簿管理</span></span>
+                </li>
+                <li>
+                    <a href="#tab-3" class="ico3"><span>教學發布</span></a>
+                    <span class="tooltip"><span>教學發布</span></span>
+                </li>
+                <li>
+                    <a href="#tab-4" class="ico6"><span>聯絡我們</span></a>
+                    <span class="tooltip"><span>聯絡我們</span></span>
+                </li>
+                <li>
+                    <a href="#tab-5" class="ico8"><span>設定</span></a>
+                    <span class="tooltip"><span>設定</span></span>
+                </li>
+            </ul>
+            <span class="shadow"></span>
+        </aside>
+            </form>
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>
+
+

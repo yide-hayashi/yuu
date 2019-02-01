@@ -1,0 +1,82 @@
+﻿@model WebApplication1.Models.managerModel
+@{
+    Layout = null;
+    int count = 0;
+    int chap = ViewBag.album;
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AlbumChange</title>
+    <style>
+        .album-changeimg
+        {
+            position:relative;
+            float:left;
+            padding:10px;
+            top:10px;
+            left:20px;
+            width:200px;
+            height:300px;
+        }
+        #textarea
+        {
+            width:600px;
+            height:400px;
+        }
+        .cbutcannel{
+            position:relative;
+            left:-500px;
+        }
+        .cbutsur
+        {
+            position:relative;
+            left:-300px;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <div> 
+        <form method="post">
+        @Html.Label("編號(請勿更改):", new { @class = "tittleLab" })
+            <br>
+            <br>
+        @Html.EditorFor(model => model.OptionAddCount_p)
+            <br>
+            <br>
+        @Html.Label("標題:", new { @class = "tittleLab" })
+        <br />
+            <br>
+        @Html.EditorFor(model => model.AlbumTitle_p, new { @class = "ddl" })
+        <br />
+        <br>
+        @Html.Label("相簿內容說明文:", new { @class = "tittleLab" })
+        <br>
+            <br>
+        @Html.TextAreaFor(model => model.AlbumContent_p, new { @id="textarea", Wrap = "Physical" })
+        <br>
+            <br>
+        @foreach (var i in ViewBag.imgArray)
+        {
+                foreach (string item in i)
+                {
+                    <div class="album-changeimg">
+                        <img src="/album/@ViewBag.album/@item" style="width:180px;" /><br>
+                        @Html.ActionLink("刪除", "AlbumDel",new { x=chap,na=item })
+                    </div>
+                }
+
+        }
+        <iframe src="/manager/upalbum" frameborder="0" scrolling="no" style="top:200px;width:800px; height:300px"></iframe>
+            <input type="button" onclick="history.back()" class="cbutcannel" value="取消">
+            <input type="submit" value="送出"  class="cbutsur"/>
+        </form>
+    </div>
+</body>
+</html>

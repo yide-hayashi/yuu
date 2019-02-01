@@ -1,0 +1,55 @@
+﻿@model WebApplication1.Models.managerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link media="all" rel="stylesheet" type="text/css" href="css/all.css" />
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    @Scripts.Render("~/bundles/manager")
+    <link rel="stylesheet" type="text/css" href="/Content/manager/login.css" />
+</head>
+<body>
+    <div id="wrapper">
+        <div id="content">
+            <div class="c1">
+                <form method="post">
+                <h2 class="Logintext">帳號登陸</h2>
+                    @if (ViewData["msg"] != null)
+                    {
+                        <label class="Loginmsg Logintext">@ViewData["msg"]</label>
+                    }
+                <div id="login">
+                    <div id="acc">
+                        <img src="~/img/login/key.png" class="height"/>  <label class="height">帳號</label>
+                        @Html.TextBoxFor(model => model.account_p, new { @class = "height" })
+                    </div>
+                    <div id="pw">
+                        <img src="~/img/login/key.png" class="height" />  <label class="height">密碼</label>
+                        @Html.PasswordFor(model => model.pw_p, new { @class = "height" })
+                    </div>
+                    <input type="submit" value="登陸"/>
+                </div>
+                    </form>
+            </div>
+        </div>
+        <form method="post">
+            <aside id="sidebar">
+                <strong class="logo"></strong>
+               
+                <span class="shadow"></span>
+            </aside>
+        </form>
+    </div>
+</body>
+</html>

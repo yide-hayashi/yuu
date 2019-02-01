@@ -1,0 +1,38 @@
+﻿@model WebApplication1.Models.managerModel
+@{
+    ViewBag.Title = "TeachChange";
+    Layout = null;
+}
+<style>
+    .album-changeimg {
+        position: relative;
+        float: left;
+        padding: 10px;
+        top: 10px;
+        left: 20px;
+        width: 200px;
+        height: 300px;
+    }
+    .cke{
+        min-width:800px;
+    }
+    #textarea {
+        width: 800px;
+        height: 400px;
+    }
+</style>
+<script src="//cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
+<h2>教學文章更改</h2>
+<form method="post">
+    @Html.Label("標題:(若要更改請刪掉再更改，此介面只能更改內容)", new { @class = "tittleLab" })
+    <br />
+    @Html.EditorFor(model => model.TeachTitle_p, new { @class = "ddl" })
+    <br />
+    @Html.Label("相簿內容說明文:", new { @class = "tittleLab" })
+    <br>
+    @Html.TextAreaFor(model => model.TeachContent_p, new { @id = "textarea", Wrap = "Physical" ,@class= "ckeditor" })
+    <br />
+        <input type="button" onclick="history.back()" id="butcannel" value="取消">
+    <input type="submit" value="送出"/>
+    
+</form>

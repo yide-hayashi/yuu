@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "服務項目";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>服務項目</h2>
+@foreach (string[] obj in ViewBag.text)
+{
+<pre style="width:800px;">
+    @obj[0]
+</pre>
+}
+

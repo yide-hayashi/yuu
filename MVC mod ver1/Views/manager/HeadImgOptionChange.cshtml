@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+    @Styles.Render("~/Content/manager/css")
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+    <div> 
+        <br>
+        <form method="post" enctype="multipart/form-data">
+        <label class="HOfont">請選擇一個圖片上傳</label><br>
+            <br>
+        <input type="file" name="files" draggable="true">
+        <br>
+            <br>
+        <input type="button" onclick="history.back()" value="取消">
+        <input type="submit" value="上傳" />
+        </form>
+    </div>
+</body>
+</html>

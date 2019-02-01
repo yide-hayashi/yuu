@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "關於我們";
+    string text="", imgstr="";
+    foreach(string[] obj in ViewBag.text)
+    {
+        text = obj[0];
+        imgstr = obj[1];
+    }
+}
+<!--contentAbout-->
+<h2>關於</h2>
+<div style="position:relative">
+<div class="contentAbout"> 
+@Html.Raw(text)
+</div>
+   
+<div >
+<h2 id="fuck">組織架構</h2>
+<img src="~/img/@imgstr" style="width:400px;"/>
+        </div>
+</div>

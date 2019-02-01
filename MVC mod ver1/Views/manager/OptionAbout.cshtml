@@ -1,0 +1,31 @@
+﻿@model WebApplication1.Models.managerModel
+@{
+    Layout = null;
+    string about = ViewBag.about;
+    string about_img = ViewBag.about_img;
+}
+@Styles.Render("~/Content/manager/css")
+<style>
+    .HOfont{
+        color:red;
+    }
+    </style>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body class="overtop">
+    <br>
+    <div> 
+        @Html.ActionLink("更改文章內容", "OptionAboutChange",new { },new { @class= "HOfont" })
+        <br>
+        <br>
+        @Html.Label("關於我們：", new { @class = "HOfont" })<br>
+        <pre class="pre-about">@about</pre>
+        <br>
+        <img src="~/img/@ViewBag.about_img" style="width:480px;"/>
+    </div>
+</body>
+</html>

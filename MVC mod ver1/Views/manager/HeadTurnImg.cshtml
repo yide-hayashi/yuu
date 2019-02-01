@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+    @Styles.Render("~/Content/manager/css")
+    int count = 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=00px" />
+    
+        
+</head>
+<body class="overtop">
+    <br>
+    <div> 
+        <label class="HOfont">首頁目前已放的公告海報、圖片:</label><br>
+        @if(ViewBag.headTurnImg!=null)
+        {
+            foreach (var i in ViewBag.headTurnImg)
+            {
+                if(i==null)
+                {
+                    break;
+                }
+                if(count%4==0)
+                {
+                    <br>
+                }
+            <img style="width:180px;" src="~/img/turn/@i">
+                count++;
+            }
+        }
+        <br>
+        <br>
+        @Html.ActionLink("新增", "HeadTurnAdd","manager",new { @class= "HOfont" })
+        @Html.ActionLink("刪除", "HeadTurnDel", "manager", new { @class = "HOfont" })
+    </div>
+</body>
+</html>

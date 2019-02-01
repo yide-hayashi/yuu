@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "據點";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string str = "";
+    int count = 0;
+    bool flag = false;
+}
+<style>
+.album-img
+{
+            position:relative;
+            left:20px;
+            width:600px;
+            height:200px;
+}
+.add-text{
+    position:relative;
+    top:-300px;
+    left:420px;
+    width:300px;
+}
+.input
+{
+    width:250px;
+}
+</style>
+@foreach (string[] obj in ViewBag.text)
+{
+    <div class="add-img">
+        <h2>@obj[0]</h2>
+        @foreach (var i in obj[1])
+        {
+            str += i;
+            count++;
+            if (count == 7 && str == "<iframe")
+            {
+                <div class="input">
+                @Html.Raw(obj[1])
+                </div>
+                str = "";
+                flag = false;
+                count = 0;
+                break;
+            }
+            else if (count == 7)
+            {
+                flag = true;
+                break;
+            }
+        }
+        @if (flag == true)
+        {
+            <img src="~/img/@obj[1]" style="width:400px;height:300px">
+            str = "";
+            flag = false;
+            count = 0;
+        }
+        <div class="add-text">
+        <p>地址: @obj[2]</p>
+        <p>電話: @obj[3]</p>
+        <p>交通資訊:</p>
+        <pre>@obj[4]</pre>
+        </div>
+    </div>
+}

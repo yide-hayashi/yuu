@@ -1,0 +1,47 @@
+﻿@model WebApplication1.Models.managerModel
+@{
+    ViewBag.Title = "feedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+        #FBcontent_p{
+        width:1200px;
+        height:400px;
+    }
+        .Fbcontent
+        {
+            width:1200px;
+        }
+    </style>
+
+<h2>聯絡我們</h2>
+<form method="post" action="@Url.Action("feedback","Home")">
+    @if (ViewBag.msg == "0")
+            {
+        <label style="color:red;font-size:18px;">有欄位未輸入</label><br>
+    }
+    @Html.Label("姓名:", new { @class = "tittleLab" })
+    <br>
+    @Html.EditorFor(model => model.FBName_p, new { @class = "titleForDb" })
+    <br>
+    @Html.Label("電子郵件:", new { @class = "tittleLab" })
+    <br>
+    @Html.EditorFor(model => model.FBmail_p, new { @class = "titleForDb" })
+    <br>
+    @Html.Label("連絡電話:", new { @class = "tittleLab" })
+    <br>
+    @Html.EditorFor(model => model.FBphone_p, new { @class = "titleForDb" })
+    <br>
+    @Html.Label("內容:", new { @class = "tittleLab" })
+    <br>
+    @Html.TextAreaFor(model => model.FBcontent_p, new {  Wrap = "Physical" ,@class="Fbcontent"})
+    <br>
+    <br>
+    <div>
+        <div class="g-recaptcha" data-sitekey="6LfBriQTAAAAAJL0Bj0GPNBV_EmziQDEVk7-rN8H"></div>
+        <input type="submit" value="送出" id="butsur" />
+    </div>
+
+</form>
+
+

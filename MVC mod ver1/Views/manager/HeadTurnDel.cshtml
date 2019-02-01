@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.Models.managerModel>
+@{
+    WebApplication1.Models.managerModel list = new WebApplication1.Models.managerModel();
+    Layout = null;
+    var grid = new WebGrid(Model, rowsPerPage: 5, selectionFieldName: "selectedRow",
+        ajaxUpdateContainerId: "gridConten");
+
+    grid.Pager(WebGridPagerModes.NextPrevious);
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/manager/css")
+    int count = 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HeadTurnDel</title>
+</head>
+<body class="overtop">
+    <br>
+    <div>
+        @Html.ActionLink("回上頁", "HeadTurnImg", "manager",new { @class= "HOfont" })
+        @grid.GetHtml(tableStyle: "webGrid",
+                                        headerStyle: "header",
+                                        alternatingRowStyle: "alt",
+                                        selectedRowStyle: "select",
+                                        columns: grid.Columns(grid.Column("", "首頁海報、圖片", format:@<div>
+                                            @if (item["HeadTurnFilestr_p"] != null)
+                                            {
+                                                count++;
+                                                <img style="width:150px; height:180px" src="/img/turn/@item["HeadTurnFilestr_p"]">
+                                            }
+                                        </div>
+                          ),
+                                    grid.Column("", header: "Actions",
+                                    format:@<form method="post">
+                                        @Html.ActionLink("刪除", "HeadTurnDelFx", new { del = item["HeadTurnFileCount_p"], dx = item["HeadTurnFilestr_p"] })
+                                    </form>
+                                    )))
+    </div>
+
+</body>
+</html>
