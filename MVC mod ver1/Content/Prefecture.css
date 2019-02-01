@@ -1,0 +1,29 @@
+﻿body {
+}
+.notice-prefecturn
+{
+   font-size:18px;
+   border:solid 1px;
+   border-top:none;
+   width:773px;
+   height:639px;
+}
+.noticeContent
+{
+    position:relative;
+    width:900px;
+    top:-30px;
+}
+.noticeContent-time
+{
+    position:relative;
+    top:-30px;
+    left:800px;
+}
+.notice-text{
+    font-size:20px;
+}
+
+.Teach-text{
+    font-size:18px;
+}

@@ -1,0 +1,20 @@
+﻿body {
+     position:relative;
+}
+#optionImg
+{
+    width:413px;
+    height:60px;
+}
+.HOfont
+{
+font-size:18px;
+}
+.overtop{
+            top:0px;
+}
+.pre-about
+{
+    font-size:15px;
+   
+}

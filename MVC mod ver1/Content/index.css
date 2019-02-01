@@ -1,0 +1,117 @@
+﻿body {
+}
+.context{
+    position:relative;
+    width:1000px;
+    height:500px;
+    margin:0px auto;
+}
+.outimg{
+    background-repeat:no-repeat;
+    background-size:auto;
+    background-position:center;
+    position:center;
+}
+.test{
+    position:center;
+    text-align: center;
+}
+.notice
+{
+   font-size:18px;
+   border:solid 1px;
+   border-top:none;
+   width:773px;
+   height:139px;
+}
+.noticeTitle
+{
+    position:relative;
+    left:60px;
+}
+.notice-text
+{
+    position:relative;
+    left:20px;
+   padding:10px;
+   
+}
+.notice-more
+{
+     position:relative;
+    font-size:16px;
+    left:730px;
+    width:100px;
+}
+.link-title{
+    position:relative;
+    left:790px;
+    top:-220px;
+    width:200px;
+}
+.link
+{
+    position:relative;
+    font-size:18px;
+   border:solid 1px;
+   border-top:none;
+   width:174px;
+   height:395px;
+   left:800px;
+   top:-225px;
+}
+.link-more{
+     position:relative;
+    font-size:16px;
+    left:930px;
+    top:-230px;
+    width:100px;
+}
+.link-img{
+    position:relative;
+    padding-bottom:10px;
+    width:150px;
+    height:80px;
+    left:10px;
+}
+.album-title{
+    position:relative;
+    left:2px;
+    top:-460px
+}
+.album-link
+{
+   position:relative;
+   font-size:18px;
+   border:solid 1px;
+   border-top:none;
+   width:773px;
+   height:170px;
+   top:-480px;
+}
+.album-img{
+    width:116px;
+    height:114px;
+    margin:10px;
+}
+.album-more{
+    position:relative;
+    font-size:16px;
+    left:730px;
+    top:-480px;
+    width:100px;
+}
+.contentAbout{
+            display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.428571429;
+    color: #333333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    height:1600px;
+    }

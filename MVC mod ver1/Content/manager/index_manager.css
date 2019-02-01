@@ -1,0 +1,98 @@
+﻿body {
+}
+#lookAlbumTabel
+{
+
+}
+#noticeTable{
+   width:800px;
+   height:1200px;
+}
+.alt
+{
+    background-color:lavender;
+    border:0px;
+    border-bottom-style:none;
+    border-color:lavender;
+    
+}
+.webGrid
+{
+    position:relative;
+    font-size:20px;
+    border:0px;
+    border-color:lavender;
+    text-align:center;
+}
+.webGrid thead
+{
+    border:0px;
+}
+.webGrid tbody
+{
+    margin: 60px;
+    border:0px;
+}
+.webGrid tbody tr td
+{
+    padding: 7px;
+}
+.webGrid thead th
+{
+    padding: 10px;
+    border:0px;
+    border-color:lavender;
+}
+.ddl
+{
+    width: 100%;
+	padding: 10px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #999;
+	background: #eee;
+	background: url(arrow01.png) right 50% no-repeat, -webkit-linear-gradient(top, #fff 0%,#efebe1 100%);
+	background: url(arrow01.png) right 50% no-repeat, linear-gradient(to bottom, #fff 0%,#efebe1 100%);
+	background-size: 20px, 100%;
+    font-size:20px;
+}
+#NoticeType_eventtype_p
+{
+        width: 100%;
+	padding: 10px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #999;
+	background: #eee;
+	background: url(arrow01.png) right 50% no-repeat, -webkit-linear-gradient(top, #fff 0%,#efebe1 100%);
+	background: url(arrow01.png) right 50% no-repeat, linear-gradient(to bottom, #fff 0%,#efebe1 100%);
+	background-size: 20px, 100%;
+    font-size:20px;
+}
+#titlestr
+{
+    font-size:16px;
+    width:600px;
+}
+.tittleLab
+{
+    font-size:23px;
+}
+.Content
+{
+    height:400px;
+    width:600px;
+    font-size:16px;
+}
+#butsur{
+    position:relative;
+    left:560px;
+
+}
+#butcannel
+{
+    position:relative;
+    left:450px;
+}
