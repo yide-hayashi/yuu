@@ -403,6 +403,7 @@ namespace WebApplication1.Models
         /// </summary>
         /// <param name="srcImagePath">來源圖片的路徑</param>
         /// <param name="saveThumbFilePath">縮圖的儲存檔案路徑</param>
+        /// <param name="maxPx">最大高度</param>
         public void imgfunction(string srcImagePath, string saveThumbFilePath,int maxPx)
         {
 
